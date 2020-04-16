@@ -1,5 +1,7 @@
 from request_functions import *
 
+AUTH_FAIL_MESSAGE = "Authorization failure. Please restart."
+
 def login_reg_procedure():
     login_option = ""
 
@@ -44,23 +46,56 @@ def init_procedure(auth):
     response = init_request(auth)
 
     if 'error' in response:
-        print("Authorization failure.")
-        return
+        print(AUTH_FAIL_MESSAGE)
+    else:
+        print("Welcome to the world of [Lambda School MUD #16476]!")
 
-    print("Welcome to the world of [Lambda School MUD #16476]!")
-
-    print("Current room:",response['title'])
-    print(response['description'])
+        print("Current room:",response['title'])
+        print(response['description'])
 
 def move_procedure(auth, direction):
-    response = move_request(direction, auth)
+    response = move_request(auth, direction)
     
     if 'error' in response:
         if response['error'] == "Malformed auth header":
-            print("Authorization failure.")
-            return
+            print(AUTH_FAIL_MESSAGE)
         else:
             print(response['error'])
     else:
         print("Current room:",response['title'])
         print(response['description'])
+
+def debug_procedure(auth):
+    response = debug_request(auth)
+    
+    if 'error' in response:
+        print("I didn't understand that.")
+    else:
+        option = input("What would you like to do, admin?")
+
+        if option = "s":
+            save_procedure(auth)
+        elif option = "l":
+            load_procedure(auth)
+
+def save_procedure(auth):
+    response = save_request(auth)
+
+    if 'error' in response:
+        if response['error'] == "Malformed auth header":
+            print(AUTH_FAIL_MESSAGE)
+        else:
+            print(response['error'])
+    else:
+        print(response['str'])
+
+def load_procedure(auth):
+    response = load_request(auth)
+
+    if 'error' in response:
+        if response['error'] == "Malformed auth header":
+            print(AUTH_FAIL_MESSAGE)
+        else:
+            print(response['error'])
+    else:
+        print(response['str'])

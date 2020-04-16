@@ -21,7 +21,19 @@ def init_request(Authorization):
     headers = {'Authorization':Authorization}
     return make_request('/api/adv/init/', headers=headers)
 
-def move_request(direction, Authorization):
+def move_request(Authorization, direction):
     params =  {'direction':direction}
     headers = {'Authorization':Authorization}
     return make_request('/api/adv/move/', params=params, headers=headers)
+
+def debug_request(Authorization):
+    headers = {'Authorization':Authorization}
+    return make_request('/api/debug/', headers=headers)
+
+def save_request(Authorization):
+    headers = {'Authorization':Authorization}
+    return make_request('/api/save/', headers=headers)
+
+def load_request(Authorization):
+    headers = {'Authorization':Authorization}
+    return make_request('/api/load/', headers=headers)

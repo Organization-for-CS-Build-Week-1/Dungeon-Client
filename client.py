@@ -10,8 +10,8 @@ endQ = False
 while not endQ:
   inp = input("What do you want to do?\n> ").lower().split(" ")
 
-  if inp[0] == "q":
-    endQ = True
+  if inp[0] in ["q", "quit", "exit"]:
+      endQ = True
 
   elif inp[0] in ["n", "north"]:
       move_procedure(auth, 'n')
@@ -37,7 +37,11 @@ while not endQ:
   # elif inp[0] in ["g", "get"]:
     # pass
 
-  # elif inp[0] in ["debug"]:
-    # pass
+  elif inp[0] in ["debug"]:
+      debug_procedure(auth)
+
+  else:
+      print("I didn't understand that.")
+
   print("\n")
 
