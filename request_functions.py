@@ -32,8 +32,8 @@ def debug_request(Authorization):
 
 def save_request(Authorization):
     headers = {'Authorization':Authorization}
-    return make_request('/api/save/', headers=headers)
+    return make_request('/api/debug/save/', headers=headers)
 
 def load_request(Authorization):
     headers = {'Authorization':Authorization}
-    return make_request('/api/load/', headers=headers)
+    return make_request('/api/debug/load/', headers=headers)

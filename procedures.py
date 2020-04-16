@@ -73,9 +73,9 @@ def debug_procedure(auth):
     else:
         option = input("What would you like to do, admin?")
 
-        if option = "s":
+        if option == "s":
             save_procedure(auth)
-        elif option = "l":
+        elif option == "l":
             load_procedure(auth)
 
 def save_procedure(auth):
