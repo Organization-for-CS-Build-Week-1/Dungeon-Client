@@ -1,47 +1,55 @@
 from procedures import *
+from request_functions import check_request
 
 
-auth = login_reg_procedure()
+print("Checking server...\n")
 
-init_procedure(auth)
+check_response = check_request()
 
-endQ = False
+if check_response != 200:
+    print("Server not responding properly. Please get help.")
+else:
+    auth = login_reg_procedure()
 
-while not endQ:
-  inp = input("What do you want to do?\n> ").lower().split(" ")
+    init_procedure(auth)
 
-  if inp[0] in ["q", "quit", "exit"]:
-      endQ = True
+    endQ = False
 
-  elif inp[0] in ["n", "north"]:
-      move_procedure(auth, 'n')
+    while not endQ:
+      inp = input("What do you want to do?\n> ").lower().split(" ")
 
-  elif inp[0] in ["s", "south"]:
-      move_procedure(auth, 's')
+      if inp[0] in ["q", "quit", "exit"]:
+          endQ = True
 
-  elif inp[0] in ["e", "east"]:
-      move_procedure(auth, 'e')
+      elif inp[0] in ["n", "north"]:
+          move_procedure(auth, 'n')
 
-  elif inp[0] in ["w", "west"]:
-      move_procedure(auth, 'w')
+      elif inp[0] in ["s", "south"]:
+          move_procedure(auth, 's')
 
-  # elif inp[0] in ["i", "inv", "inventory"]:
-    # pass
+      elif inp[0] in ["e", "east"]:
+          move_procedure(auth, 'e')
 
-  # elif inp[0] in ["l", "look"]:
-    # pass
+      elif inp[0] in ["w", "west"]:
+          move_procedure(auth, 'w')
 
-  # elif inp[0] in ["d", "drop"]:
-    # pass
+      # elif inp[0] in ["i", "inv", "inventory"]:
+        # pass
 
-  # elif inp[0] in ["g", "get"]:
-    # pass
+      # elif inp[0] in ["l", "look"]:
+        # pass
 
-  elif inp[0] in ["debug"]:
-      debug_procedure(auth)
+      # elif inp[0] in ["d", "drop"]:
+        # pass
 
-  else:
-      print("I didn't understand that.")
+      # elif inp[0] in ["g", "get"]:
+        # pass
 
-  print("\n")
+      elif inp[0] in ["debug"]:
+          debug_procedure(auth)
+
+      else:
+          print("I didn't understand that.")
+
+      print("\n")
 

@@ -3,6 +3,8 @@ import requests
 import json
 
 main_url = 'http://127.0.0.1:5000'
+# 'https://safe-reef-80226.herokuapp.com/'
+# 'http://127.0.0.1:5000'
 
 def make_request(dir, params=None, headers=None):
     url = main_url + dir
@@ -37,3 +39,9 @@ def save_request(Authorization):
 def load_request(Authorization):
     headers = {'Authorization':Authorization}
     return make_request('/api/debug/load/', headers=headers)
+
+def check_request():
+    url = main_url + '/api/check/'
+    response = requests.request('GET', url)
+
+    return response.status_code
